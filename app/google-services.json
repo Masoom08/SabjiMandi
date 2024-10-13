@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "339237254379",
+    "project_id": "farmer-cfa7d",
+    "storage_bucket": "farmer-cfa7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339237254379:android:80d8d297a7fb91823ebaae",
+        "android_client_info": {
+          "package_name": "st.masoom.sabjimandi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6f9s7YNPZfDkNX4PeGFFNIyZG4vrHGH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
