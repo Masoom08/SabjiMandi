@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -68,6 +69,19 @@ dependencies {
     implementation("androidx.benchmark:benchmark-macro:1.3.1")
     implementation("androidx.leanback:leanback:1.0.0")
 
+
+    implementation("com.google.firebase:firebase-crashlytics-buildtools:3.0.2")
+
+
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+
+    
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.firebase:firebase-storage:21.0.1")
+    implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation("androidx.compose.foundation:foundation-layout-android:1.5.0")
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
@@ -76,7 +90,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-
-
+    implementation ("com.razorpay:checkout:1.6.40")
+    implementation ("androidx.navigation:navigation-compose:2.6.0")
+    implementation ("com.google.firebase:firebase-auth:22.1.1")
 
 }
