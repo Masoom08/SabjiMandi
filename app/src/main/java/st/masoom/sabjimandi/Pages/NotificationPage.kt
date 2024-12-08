@@ -17,6 +17,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
+import androidx.compose.ui.text.font.FontFamily
 
 @Composable
 fun NotificationPage() {
@@ -29,9 +30,11 @@ fun NotificationPage() {
         Row {
             Text(
                 text = "Notification ",
+
                 style = TextStyle(
                     color = Color.Black,
                     fontSize = 32.sp,
+                    fontFamily = FontFamily.Serif,
                     fontWeight = FontWeight.Bold
                 )
             )

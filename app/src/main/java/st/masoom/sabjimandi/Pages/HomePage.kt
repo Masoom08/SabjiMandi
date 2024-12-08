@@ -28,6 +28,7 @@ import st.masoom.sabjimandi.RetailerCard
 import st.masoom.sabjimandi.getRetailers
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
@@ -48,16 +49,18 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
     //Text(text = "Home", fontSize = 24.sp, modifier = Modifier.padding(16.dp))
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    showChat = !showChat // Show the chat page when FAB is clicked
-                },
-                modifier = Modifier.padding(bottom = 56.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Send,
-                    contentDescription = "Chatbot"
-                ) // Chatbot icon
+            if (!showChat) {
+                FloatingActionButton(
+                    onClick = {
+                        showChat = !showChat // Show the chat page when FAB is clicked
+                    },
+                    modifier = Modifier.padding(bottom = 56.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Send,
+                        contentDescription = "Chatbot"
+                    ) // Chatbot icon
+                }
             }
         },
         floatingActionButtonPosition = FabPosition.End // Align to the bottom-right
@@ -95,6 +98,7 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
                             style = TextStyle(
                                 color = Color(0xFF234E09),
                                 fontSize = 32.sp,
+                                fontFamily = FontFamily.Serif,
                                 fontWeight = FontWeight.Bold
                             )
                         )
@@ -109,7 +113,7 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
                         style = TextStyle(
                             color = Color.Gray,
                             fontSize = 12.sp,
-                            fontWeight = FontWeight.Light
+                            fontWeight = FontWeight.SemiBold
                         )
                     )
 
@@ -120,6 +124,7 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
                         style = TextStyle(
                             color = Color.Black,
                             fontSize = 24.sp,
+                            fontFamily = FontFamily.Serif,
                             fontWeight = FontWeight.Bold
                         )
                     )
@@ -135,6 +140,7 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
                         text = "Nearest Market",
                         style = TextStyle(
                             color = Color.Black,
+                            fontFamily = FontFamily.Serif,
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -151,6 +157,7 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
                         text = "Explore More",
                         style = TextStyle(
                             color = Color.Black,
+                            fontFamily = FontFamily.Serif,
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold
                         )

@@ -32,14 +32,21 @@ fun BottomNavigationBar(navController: NavHostController) {
     )
 
     BottomNavigation(
-        backgroundColor = Color(0xFF8BFC45), // Use the primary theme color or a custom color
-        contentColor = Color.Black
+        backgroundColor = Color(0xFF006401), // Use the primary theme color or a custom color
+        contentColor = Color(0xFFFFFFFF)
     ) {
         val currentRoute = navController.currentBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(imageVector = item.icon, contentDescription = item.title) },
-                label = { Text(item.title) },
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = item.title,
+                        tint = if (currentRoute == item.route) Color.White else Color.Black // White for selected, gray for unselected
+                    ) },
+                label = { Text(item.title,
+                    color = if (currentRoute == item.route) Color.White else Color.Black // White for selected, gray for unselected
+                ) },
                 selected = currentRoute == item.route,
                 onClick = {
                     navController.navigate(item.route) {
@@ -47,20 +54,32 @@ fun BottomNavigationBar(navController: NavHostController) {
                         launchSingleTop = true
                         restoreState = true
                     }
-                }
+                },
+                selectedContentColor = Color.White, // White color for selected
+                unselectedContentColor = Color.Gray, // Gray color for unselected
+                alwaysShowLabel = true
             )
         }
     }
 }
 
 @Composable
-fun NavHostContainer(navController: NavHostController, modifier: Modifier) {
+fun NavHostContainer(
+    navController: NavHostController,
+    modifier: Modifier
+    , authViewModel: AuthViewModel) {
+
     val context = LocalContext.current
-    NavHost(navController = navController, startDestination = NavigationItem.Scroll.route) {
-        composable(NavigationItem.Scroll.route) { HomePage(userName = "user ", chatViewModel = ChatViewModel(), context = context) }
+    NavHost(
+        navController = navController,
+        startDestination = NavigationItem.Scroll.route) {
+        composable("login"){ Login( navController, authViewModel ) }
+        composable("signup"){ SignUp( navController, authViewModel ) }
+        composable(NavigationItem.Scroll.route) { HomePage(userName = "Rahul ", chatViewModel = ChatViewModel(), context = context) }
         composable(NavigationItem.Search.route) { SearchPage(navController = navController) }
         composable(NavigationItem.Notification.route) { NotificationPage() }
         composable(NavigationItem.Profile.route) { ProfilePage() }
+
     }
 }
 

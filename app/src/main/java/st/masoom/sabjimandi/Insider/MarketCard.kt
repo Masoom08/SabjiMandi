@@ -27,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.font.FontFamily
 
 
 data class Market(
@@ -97,6 +98,7 @@ fun MarketCard(market: Market) {
                     Text(
                         text = market.name,
                         fontSize = 20.sp,
+                        fontFamily = FontFamily.Serif,
                         fontWeight = FontWeight.Bold
                     )
 

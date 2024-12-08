@@ -26,6 +26,7 @@ fun CustomTopBar() {
         title = {
             Text(
                 text = "Sabji Mandi",
+                color = Color.Black,
                 style = TextStyle(
                     color = Color.Black,    // Dark green color
                     fontSize = 28.sp,             // Slightly larger font for emphasis
@@ -37,8 +38,8 @@ fun CustomTopBar() {
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF8BFC45), // Custom color for the background
-            titleContentColor = Color.Black
+            containerColor = Color(0xFF006401), // Custom color for the background
+            titleContentColor = Color.White
         )
     )
 }

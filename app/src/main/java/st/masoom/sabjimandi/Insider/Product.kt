@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CheckboxDefaults.colors
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -84,6 +85,7 @@ fun ProductImages(productList: List<Product>, navController: NavController) {
                     painter = painterResource(id = product.imageRes),
                     contentDescription = product.name,
                     modifier = Modifier
+
                         .size(60.dp) // Size of the circular images
                         .clip(CircleShape), // Make it circular
                     contentScale = ContentScale.Crop
@@ -121,6 +123,7 @@ fun ProductDetailPage(productId: String?, context: Context) {
                 contentDescription = "Product Image",
                 modifier = Modifier
                     .padding(24.dp)
+                    .clip(RoundedCornerShape(16.dp))
                     .fillMaxWidth()    // Takes the full width of the column
                     .aspectRatio(1f),   // Makes the image square , // Optional if you want a circular image
                 contentScale = ContentScale.Crop
