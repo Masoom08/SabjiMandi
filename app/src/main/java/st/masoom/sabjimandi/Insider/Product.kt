@@ -41,6 +41,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import st.masoom.sabjimandi.Pages.Cart
+import st.masoom.sabjimandi.Pages.Payment
 import st.masoom.sabjimandi.Pages.PaymentActivity
 
 // Data class to represent a product
@@ -104,9 +106,16 @@ fun ProductImages(productList: List<Product>, navController: NavController) {
 }
 
 @Composable
-fun ProductDetailPage(productId: String?, context: Context) {
+fun ProductDetailPage(navController: NavController,productId: String?, context: Context) {
     var quantity by remember { mutableStateOf(1) }
     val product = Products().find { it.name == productId }
+
+    var isCartPageVisible by remember { mutableStateOf(false) }
+    var currentScreen by remember { mutableStateOf("productDetail") }
+
+
+    when (currentScreen) {
+        "productDetail" -> {
     Column(modifier = Modifier.padding(16.dp,top=80.dp)  ) {
         Text(text = "$productId",
             style = TextStyle(
@@ -133,7 +142,7 @@ fun ProductDetailPage(productId: String?, context: Context) {
             Text(text = "Product Image")
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Row() {
+        Row {
             Text(
                 text = "Description: ",
                 style = TextStyle(
@@ -162,21 +171,31 @@ fun ProductDetailPage(productId: String?, context: Context) {
         Text(text ="₹ 49.99")
         Spacer(modifier = Modifier.height(16.dp))
         // Add to Cart button
-        Button(onClick = { /* Handle Add to Cart action */ },colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF8BFC45),
-            contentColor = Color.Black
+        Button(onClick = {  },colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF006401),
+            contentColor = Color.White
         )) {
             Text(text = "Add to Cart")
         }
-        Button(onClick = {
+        Button(onClick = {currentScreen = "payment"
+            /*
             val intent = Intent(context, PaymentActivity::class.java)
             intent.putExtra("amount", 500) // Set the price of the product
             context.startActivity(intent) // Trigger Razorpay payment
+        */
+
         },colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF8BFC45),
-            contentColor = Color.Black
+
+            containerColor = Color(0xFF006401),
+            contentColor = Color.White
         )) {
             Text(text = "Buy Now")
+        }
+    }
+}
+        "payment" -> {
+            // Display the Payment composable
+            Payment()
         }
     }
 }

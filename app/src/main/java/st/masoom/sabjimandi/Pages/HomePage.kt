@@ -80,7 +80,7 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(top = 64.dp, start = 16.dp, end = 16.dp, bottom = 56.dp)
+                    .padding(top = 120.dp, start = 16.dp, end = 16.dp, bottom = 56.dp)
             ) {
                 item {
                     Row {
@@ -173,11 +173,13 @@ fun HomePage( userName: String, chatViewModel: ChatViewModel, context: Context) 
         // Product Detail Page
         composable("productDetail/{productId}") { backStackEntry ->
             val productId = backStackEntry.arguments?.getString("productId")
-            val context = LocalContext.current
-            ProductDetailPage(productId = productId , context= context)
+            ProductDetailPage(
+                navController = navController,
+                productId = productId,
+                context = LocalContext.current
+            )
         }
         }
-
         }
     }
 }

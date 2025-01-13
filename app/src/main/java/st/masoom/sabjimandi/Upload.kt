@@ -50,8 +50,8 @@ fun UploadImagePage(onBack: () -> Unit) {
         // Button to select an image from the gallery
         Button(onClick = { launcher.launch("image/*")}
             ,colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF8BFC45),
-            contentColor = Color.Black
+                containerColor = Color(0xFF006401),
+            contentColor = Color.White
             ), ) {
             Text(text = "Choose Image")
         }
@@ -95,8 +95,8 @@ fun UploadImagePage(onBack: () -> Unit) {
             }
         },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF8BFC45),
-                contentColor = Color.Black
+                containerColor = Color(0xFF006401),
+                contentColor = Color.White
             ),) {
             Text(text = "Upload")
         }
@@ -105,8 +105,8 @@ fun UploadImagePage(onBack: () -> Unit) {
 
         // Back button to return to the profile screen
         Button(onClick = onBack,colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF8BFC45),
-            contentColor = Color.Black
+            containerColor = Color(0xFF006401),
+            contentColor = Color.White
         ),) {
             Text(text = "Back to Profile")
         }

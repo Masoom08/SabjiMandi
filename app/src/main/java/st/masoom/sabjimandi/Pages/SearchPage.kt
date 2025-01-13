@@ -37,7 +37,7 @@ fun SearchPage(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 56.dp)
+            .padding(top = 120.dp)
             .padding(16.dp)
     ) {
         // Search bar input field

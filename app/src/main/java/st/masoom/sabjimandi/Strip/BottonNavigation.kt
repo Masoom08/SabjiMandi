@@ -72,13 +72,13 @@ fun NavHostContainer(
     val context = LocalContext.current
     NavHost(
         navController = navController,
-        startDestination = NavigationItem.Scroll.route) {
+        startDestination = "login"/*NavigationItem.Scroll.route*/) {
         composable("login"){ Login( navController, authViewModel ) }
         composable("signup"){ SignUp( navController, authViewModel ) }
         composable(NavigationItem.Scroll.route) { HomePage(userName = "Rahul ", chatViewModel = ChatViewModel(), context = context) }
         composable(NavigationItem.Search.route) { SearchPage(navController = navController) }
         composable(NavigationItem.Notification.route) { NotificationPage() }
-        composable(NavigationItem.Profile.route) { ProfilePage() }
+        composable(NavigationItem.Profile.route) { ProfilePage(navController = navController) }
 
     }
 }

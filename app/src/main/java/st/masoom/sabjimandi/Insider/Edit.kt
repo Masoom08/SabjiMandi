@@ -114,7 +114,7 @@ fun EditProfilePage(
             name, phone, email, pronouns, gender) // Pass the updated data
             },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF8BFC45),
+                containerColor =Color(0xFF006401),
                 contentColor = Color.White
             ),
             modifier = Modifier.fillMaxWidth()

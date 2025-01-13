@@ -6,10 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.*
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Face
@@ -21,7 +19,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,17 +31,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import openMap
 import androidx.compose.material3.*
+import androidx.navigation.NavController
+import st.masoom.sabjimandi.Pages.Cart
+import st.masoom.sabjimandi.Login.signOut
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfilePage() {
+fun ProfilePage(navController: NavController) {
     var imageResource by remember { mutableStateOf(R.drawable.farmer) }
     var userName by remember { mutableStateOf("Rahul Kumar") }
     var phoneNumber by remember { mutableStateOf("945477777") }
@@ -58,8 +56,15 @@ fun ProfilePage() {
     var isEditingProfile by remember { mutableStateOf(false) }
     var isUploadingImage by remember { mutableStateOf(false) }
     var showBottomSheet by remember { mutableStateOf(false) }
+    var isCartPageVisible by remember { mutableStateOf(false) }
 
-    if (isEditingProfile) {
+    if (isUploadingImage) {
+        // Render the UploadImagePage
+        UploadImagePage(
+            onBack = { isUploadingImage = false } // Set isUploadingImage to false when back is pressed
+        )
+    }
+    else if (isEditingProfile) {
         EditProfilePage(
             initialName = userName,
             initialPhone = phoneNumber,
@@ -74,11 +79,14 @@ fun ProfilePage() {
                 isEditingProfile = false
             }
         )
-    } else {
+    } else if (isCartPageVisible) {
+        // Show Cart composable
+        Cart(navController = navController)
+    }else {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 56.dp)
+                .padding(top = 120.dp)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Top
         ) {
@@ -204,7 +212,8 @@ fun ProfilePage() {
                         Spacer(modifier = Modifier.width(32.dp))
 
                         Button(
-                            onClick = { /* Handle Cart */ },
+                            onClick = {isCartPageVisible = true
+                                      },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(0xFF006401),
                                 contentColor = Color.White
@@ -254,7 +263,9 @@ fun ProfilePage() {
                     }
                     Row {
                         Button(
-                            onClick = { },
+                            onClick = {
+
+                                signOut(navController) },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(0xFF006401),
                                 contentColor = Color.White

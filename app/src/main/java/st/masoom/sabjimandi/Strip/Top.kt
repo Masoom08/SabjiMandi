@@ -26,15 +26,15 @@ fun CustomTopBar() {
         title = {
             Text(
                 text = "Sabji Mandi",
-                color = Color.Black,
+                color = Color.White,
                 style = TextStyle(
-                    color = Color.Black,    // Dark green color
+                    color = Color.White,    // Dark green color
                     fontSize = 28.sp,             // Slightly larger font for emphasis
                     fontFamily = LobsterFontFamily,  // Custom font file in res/font folder
-                    fontWeight = FontWeight.ExtraBold,
+                    fontWeight = FontWeight.Bold,
 
                 ),
-                modifier = Modifier.padding(vertical = 0.dp)
+                modifier = Modifier.padding()
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(

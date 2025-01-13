@@ -24,7 +24,7 @@ fun NotificationPage() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 56.dp)
+            .padding(top = 120.dp)
             .padding(16.dp) // Add padding around the screen
     ) {
         Row {

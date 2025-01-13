@@ -30,7 +30,7 @@ fun Login(navController: NavController, authViewModel: AuthViewModel) {
 
     LaunchedEffect(authState.value){
         when(authState.value){
-            is  AuthState.Authenticated -> navController.navigate("home")
+            is  AuthState.Authenticated -> navController.navigate("scroll")
             is AuthState.Error -> Toast.makeText(context ,
                 (authState.value as AuthState.Error).message , Toast.LENGTH_SHORT).show()
             else -> Unit
@@ -92,11 +92,11 @@ fun Login(navController: NavController, authViewModel: AuthViewModel) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
-            onClick = {
+            onClick = {authViewModel.login(username, password)
                 },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF8BFC45),
-                contentColor = Color.Black),
+                containerColor = Color(0xFF006401),
+                contentColor = Color.White),
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Login")
